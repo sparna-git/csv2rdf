@@ -54,7 +54,7 @@ public class FromRDF4J {
 		Literal output = new Literal();
 		output.setLabel(literal.getLabel());
 		literal.getLanguage().ifPresent(l -> output.setLanguage(l));
-		if(literal.getLanguage().isEmpty()) {
+		if(literal.getLanguage().isEmpty() && literal.getDatatype() != null) {
 			output.setDatatype(fromRDF4J(literal.getDatatype()));
 		}
 		return output;
